@@ -1,0 +1,43 @@
+﻿<Window x:Class="LibreriaModoDesconectado.Views.ListaLibrosView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LibreriaModoDesconectado.Views"
+        mc:Ignorable="d"
+     Title="ADMINISTRACIÓN DE LIBROS" FontFamily="Century Gothic" Height="500" Width="820" Icon="/Images/icono.png" WindowStartupLocation="CenterScreen">
+    <Window.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="Teal" Offset="0.2"/>
+            <GradientStop Color="DarkCyan" Offset="0.55"/>
+            <GradientStop Color="LightSeaGreen" Offset=".75"/>
+        </LinearGradientBrush>
+    </Window.Background>
+    <DockPanel>
+        <Label DockPanel.Dock="Top" HorizontalAlignment="Center" Margin="0,15,0,0" Foreground="White" FontFamily="Century Gothic" FontSize="35">ADMINISTRACIÓN DE LIBROS</Label>
+
+        <WrapPanel DockPanel.Dock="Bottom" HorizontalAlignment="Right">
+            <Button DockPanel.Dock="Bottom" Name="btnAgregar" Click="BtnAgregar_Click" HorizontalAlignment="Right" Margin="5" Width="45" Height="50" Background="Transparent" BorderBrush="Transparent">
+                <Image Source="/Images/agregar.png"/>
+            </Button>
+
+            <Button Name="btnEliminar" Width="55" Height="55" Background="Transparent" BorderBrush="Transparent" Command="{Binding Eliminar}" CommandParameter="{Binding ElementName=dgvLibros, Path=SelectedItem}">
+                <Image Margin="5" Source="/Images/eliminar.png"/>
+            </Button>
+
+            <Button Width="55" Height="55" Background="Transparent" BorderBrush="Transparent" Name="btnEditar" Click="BtnEditar_Click">
+                <Image Margin="5" Source="/Images/Editar.png"/>
+            </Button>
+        </WrapPanel>
+        
+        
+        <DataGrid Margin="10" Name="dgvLibros" ItemsSource="{Binding Libros}" FontSize="15" FontFamily="Century Gothic" AlternatingRowBackground="LightGray" AutoGenerateColumns="False" IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Titulo" Width=".6*" Binding="{Binding Titulo}"/>
+                <DataGridTextColumn Header="Autor" Width=".3*" Binding="{Binding Autor}"/>
+                <DataGridTextColumn Header="Editorial" Width=".2*" Binding="{Binding Editorial}"/>
+                <DataGridTextColumn Header="Num. de Paginas" Binding="{Binding NUmPaginas}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </DockPanel>
+</Window>
